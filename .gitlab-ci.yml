@@ -1,5 +1,7 @@
+---
+
 # All available Hugo versions are listed here: https://gitlab.com/pages/hugo/container_registry
-image: registry.gitlab.com/pages/hugo:latest
+image: registry.gitlab.com/pages/hugo/hugo_extended:latest
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -12,9 +14,16 @@ test:
 
 pages:
   script:
+  - chmod 0400 $GITHUB_REPO_KEY
+  - export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i $GITHUB_REPO_KEY"
+  - apk add git openssh-client
+  - git config --global user.email "byo.spoon@gmail.com"
+  - git config --global user.name "byo"
+  - git clone "$GITHUB_REPO_NAME" public
   - hugo
-  artifacts:
-    paths:
-    - public
+  - cd public
+  - git add .
+  - git commit -m "Content update"
+  - git push origin
   only:
   - master
