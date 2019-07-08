@@ -20,6 +20,8 @@ pages:
   - git config --global user.email "byo.spoon@gmail.com"
   - git config --global user.name "byo"
   - git clone "$GITHUB_REPO_NAME" public
+  - rm -rf public/*
+  - echo "$GITHUB_CNAME" > public/CNAME
   - hugo
   - cd public
   - git add .
