@@ -25,7 +25,6 @@ pages:
   - hugo
   - cd public
   - git add .
-  - git commit -m "Content update"
-  - git push origin
+  - git diff --cached --exit-code || ( git commit -m "Content update" && git push origin )
   only:
   - master
