@@ -5,10 +5,20 @@
     <link>https://blog.bswiecki.dev/post/</link>
     <description>Recent content in Posts on Just a dev blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 06 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.bswiecki.dev/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Knowledge DAG</title>
+      <link>https://blog.bswiecki.dev/post/2019-07-10-knowledge-dag/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.bswiecki.dev/post/2019-07-10-knowledge-dag/</guid>
+      <description>If I have some specific problem to solve, I find technology that seems relevant, then I scan the Internet for some basic introduction, then some tutorial, then documentation.
+My usual problem is that the issue I want to solve is usually not in the introduction nor the tutorial. I rarely find ready-to-use solution and unfortunately I tend to really dislike adjusting my idea to what you can easily achieve with tutorial-like solutions.</description>
+    </item>
     
     <item>
       <title>Boot</title>
