@@ -10,7 +10,7 @@ theme                  = "beautifulhugo"
 metaDataFormat         = "yaml"
 pygmentsUseClasses     = true
 pygmentCodeFences      = true
-#disqusShortname       = "XXX"
+disqusShortname       = "blogbswieckidev"
 #googleAnalytics       = "XXX"
 
 [Params]
