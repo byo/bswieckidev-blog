@@ -4,7 +4,7 @@ date: "2019-07-14"
 tags: ["k-dag", "ideas"]
 ---
 
-Last time I brefly described the knowledge in the form of a Graph structure.
+Last time I briefly described the knowledge in the form of a Graph structure.
 Each term having set of prerequisites is a node in this graph, each
 dependency is a directed edge in such graph.
 
@@ -33,22 +33,22 @@ But let's think about a bit different shape.
   some kind of digital signing could be used as a form of proof of
   accomplishment
 - Knowledge points (points in the DAG) may be of different kinds:
-   * Some knowledge points are milestone ones and group together smaller
-     terms (like mathematics groups geometry, trigonometry and amny others)
-   * Some knowledge points are sequentially chained - i.e. steps to achieve
-     one greater point but split into smaller parts to ease the learning
-     process
-   * Knowledge point may describe some short topic - i.e. 5-minute
-     lecture with easy to understand definition
-   * Knowledge point may also be some sort of example to clarify previously shown
-     term
-   * Knowledge point may be an excercise that helps memorizing a term
-   * Knowledge point may also be a test that has to be passed in order
-     to mark the point as mastered (this I berlieve would require
-     some digital signature to proove the test has been passed)
+  - Some knowledge points are milestone ones and group together smaller
+    terms (like mathematics groups geometry, trigonometry and any others)
+  - Some knowledge points are sequentially chained - i.e. steps to achieve
+    one greater point but split into smaller parts to ease the learning
+    process
+  - Knowledge point may describe some short topic - i.e. 5-minute
+    lecture with easy to understand definition
+  - Knowledge point may also be some sort of example to clarify previously shown
+    term
+  - Knowledge point may be an exercise that helps memorizing a term
+  - Knowledge point may also be a test that has to be passed in order
+    to mark the point as mastered (this I believe would require
+    some digital signature to prove the test has been passed)
 - The form / kind of knowledge points may be freely adjusted to the
   knowledge that needs to be presented. Some terms may require a lot
-  of examples and excercises to be mastered, some could require only a
+  of examples and exercises to be mastered, some could require only a
   brief explanation, some may present a lot of terms which have to
   be mastered one by one
 - Some major terms could have different set of "paths" (or
@@ -59,7 +59,7 @@ But let's think about a bit different shape.
 - The whole graph should be clustered into larger groups
   to help better organizing the knowledge. A group should touch
   one specific bigger topic of the knowledge (just like one class
-  in a school). Each such group shold have at least few
+  in a school). Each such group should have at least few
   major terms in it, preferably one.
 - If one group does rely on a knowledge from another group it's best to depend
   on major terms from other groups only. That way we just shape the overall
@@ -83,15 +83,15 @@ the asynchronous programming - I try to find the best way to master those major 
 
 Once I'm done I can go to my task list.
 
-It shows a nice list of knowledge points - those I can jump into straight away - 
+It shows a nice list of knowledge points - those I can jump into straight away -
 I've already mastered all their dependencies. Ok, let's jump into one and start
-doing my lectures and excercies.
+doing my lectures and exercises.
 
 Whoow, there's a surprise. The creator of node.js lecture has created a nice 2D
 map of all terms I'd have to learn in the "course" - that looks lust like maps
 in Super Mario, nice :)
 
-Next day I'm doing few lectures while commuting to my job - those are short 
+Next day I'm doing few lectures while commuting to my job - those are short
 5-minute videos so I can easily pause at any time I want and continue later.
 
 Finally after few weeks there's an exam - I take a deep breath and open a web page
@@ -102,16 +102,16 @@ Few minutes later I receive a message that I've passed, hurray !!!
 
 I quickly grab the link to my accomplishment and post it onto my LinkedIn account.
 I did master *node.js* since I want to change my job soon. Such accomplishment badge will be
-helpful. LinkedIn servers quickly verify all signatures of the accomplishment 
-- soon my profile gets another nice icon in my badges page.
+helpful. LinkedIn servers quickly verify all signatures of the accomplishment -
+soon my profile gets another nice icon in my badges page.
 
 Few days later I got the first interview invitation. Recruiter was looking for
 people who mastered *node.js* and knows some *C++* - I mastered *C++* half a year ago,
 that was a good move.
 
-Recruiter knows exacly what's my level of the knowledge. There are few topics
+Recruiter knows exactly what's my level of the knowledge. There are few topics
 I'm still not yet good enough at but I already got the list from the job
-decription so I know what to prepare next.
+description so I know what to prepare next.
 
 Some time has passed and I got my new job. After the introduction, I start getting used to
 some internal tools created by the company. Of course they have their internal K-Dag
@@ -119,20 +119,19 @@ server so even though the topics I master here won't be made public, I already k
 how to operate there and the system knows what I've mastered so far.
 
 Few months later I'm sent to a training session. I know it's pretty expensive so I
-could never affor that by myself. Bu the company sees a big potential in me so they
+could never afford that by myself. Bu the company sees a big potential in me so they
 believe it's worth it. Before starting the course I've sent my profile to the trainer.
 He was well prepared - he knew exactly what the background
-of our group was so he tuned the material to our current kwnowledge. Once we've
+of our group was so he tuned the material to our current knowledge. Once we've
 completed the course, he also signed all certificates for us - my profile has been
 updated once again, new achievements unlocked on my LinkedIn account :)
-
 
 The idea is here, what's next?
 ------------------------------
 
 I don't know how about you but I'm sold on the idea and would like to implement it
-one day. It could be made fully decentralized and distributed, could be shaped in 
-a way to make the knowledge more approachable and accessible. 
+one day. It could be made fully decentralized and distributed, could be shaped in
+a way to make the knowledge more approachable and accessible.
 It could also have many implementations as long as the core is strong and well
 thought off. There are also many ways to monetize K-DAG so why not try doing it?
 

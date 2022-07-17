@@ -31,10 +31,9 @@ So what this will be about? Let's shape some rules, guidelines for myself:
 - If I figure out something that surprised me, I'll try to write about it
 - If I manage to come up with an idea I consider good enough to share, I'll write about it
 - If I find an improvement to some idea I've came up with earlier that's worth
-  mentnioning, I'll write about it
+  mentioning, I'll write about it
   
 Of course I reserve the right to do all of this in a chaotic way common
 to the people working everyday to feed their families
 (or better explanation of myself: those lazy enough to use the lack of
 time as an excuse).
-

@@ -4,7 +4,6 @@ date: "2019-07-10"
 tags: ["k-dag", "ideas"]
 ---
 
-
 If I have some specific problem to solve, I find technology that
 seems relevant, then I scan the Internet for some
 basic introduction, then some tutorial, then documentation.
@@ -17,7 +16,7 @@ read large parts of the documentation just to find few little
 details hidden somewhere in the middle.
 
 Even though it's really the best way IMO, I believe that reading through
-whole documentation of some project can be too time consuming. Our world is 
+whole documentation of some project can be too time consuming. Our world is
 accelerating and I believe that the ability to find a small subset of
 information to reach specific goal may soon be a necessity.
 
@@ -39,11 +38,11 @@ $$
 This formula may seem very simple - that's because we already know all the smaller
 parts it consists of: we know how to multiply numbers, what a fraction is,
 we also know how to measure the length in 2D space. We know it because we've learnt
-it before. Even such basic things like the length of a line segment: you need to know 
+it before. Even such basic things like the length of a line segment: you need to know
 what is a point, a line, metric unit.
 
 What we can see even from this small example is that knowledge terms form a pretty
-well formed graph of depencencies:
+well formed graph of dependencies:
 
 ![Dependency graph](https://g.gravizo.com/svg?
 digraph G {
@@ -73,9 +72,9 @@ digraph G {
 }
 )
 
-In this exmaple graph it's pretty clear what you need to learn in order to know
+In this example graph it's pretty clear what you need to learn in order to know
 how to calculate the area of a triangle. There's also an alternative term - **Circle**.
-It does share some of it's depencencies with **Triangle area**.
+It does share some of it's dependencies with **Triangle area**.
 And it's pretty clear that after mastering the **Circle** term,
 you don't have to learn about **Points** and **Line segments** once again to master
 the **Triangle area**.
@@ -83,14 +82,14 @@ the **Triangle area**.
 Graph theory
 ------------
 
-In more complex, real-world scenarios you'd see a huge cloud of terms and 
+In more complex, real-world scenarios you'd see a huge cloud of terms and
 dependencies between them all over the place. Even though it would be gigantic,
 graphs have some really nice properties and we know efficient algorithms to
 extract information from them.
 
-For each node in such graph we could 
-eaisly calculate it's complete depencency list and order it so that you start from
-the basics, go through more complex terms and finally get into the destination one. 
+For each node in such graph we could easily calculate it's complete dependency list
+and order it so that you start from the basics,
+go through more complex terms and finally get into the destination one.
 It's also trivial to skip those paths which are irrelevant to the topic
 being mastered.
 
