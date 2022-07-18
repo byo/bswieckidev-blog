@@ -44,33 +44,34 @@ what is a point, a line, metric unit.
 What we can see even from this small example is that knowledge terms form a pretty
 well formed graph of dependencies:
 
-![Dependency graph](https://g.gravizo.com/svg?
-digraph G {
-    ta[label="Triangle area"];
-    mult[label="Multiplication"];
-    ll[label="Line segment length"];
-    ls[label="Line segment"];
-    l[label="Line"];
-    p[label="Point"];
-    f[label="Fractions"];
-    d[label="Division"];
-    n[label="Real numbers"];
-    c[label="Circle"];
-    ll -> ta;
-    mult -> ta;
-    ls -> ll;
-    l -> ls;
-    p -> ls;
-    f -> ta;
-    d -> f;
-    n -> d;
-    n -> mult;
-    n -> f;
-    n -> ll;
-    p -> c;
-    ls -> c;
-}
-)
+{{<mermaid>}}
+%%{init: {'theme': 'forest', "flowchart" : { "curve" : "basis" } } }%%
+graph TD
+    ta[Triangle area];
+    mult[Multiplication];
+    ll[Line segment length];
+    ls[Line segment];
+    l[Line];
+    p[Point];
+    f[Fractions];
+    d[Division];
+    n[Real numbers];
+    c[Circle];
+
+    ll --> ta;
+    mult --> ta;
+    ls --> ll;
+    l --> ls;
+    p --> ls;
+    f --> ta;
+    d --> f;
+    n --> d;
+    n --> mult;
+    n --> f;
+    n --> ll;
+    p --> c;
+    ls --> c;
+{{< /mermaid >}}
 
 In this example graph it's pretty clear what you need to learn in order to know
 how to calculate the area of a triangle. There's also an alternative term - **Circle**.
