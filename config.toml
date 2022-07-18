@@ -4,6 +4,7 @@ layoutdir     = "layouts"
 publishdir    = "public"
 title         = "Just a dev blog"
 canonifyurls  = true
+enableEmoji = true
 
 DefaultContentLanguage = "en"
 theme                  = "beautifulhugo"
