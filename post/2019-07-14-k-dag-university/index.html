@@ -1,0 +1,98 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>K-DAG University - Just a dev blog</title><meta name=description content="Last time I briefly described the knowledge in the form of a Graph structure. Each term having set of prerequisites is a node in this graph, each dependency is a directed edge in such graph.
+Now let&rsquo;s assume this graph is a directed acyclic one and there are no terms which form a cycle of dependencies. In reality I don&rsquo;t believe this to be true but it does simplify reasoning and can definitely be achieved locally for larger terms."><meta name=author content="Bartłomiej Święcki"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Just a dev blog","url":"https:\/\/blog.bswiecki.dev\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.bswiecki.dev\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.bswiecki.dev\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.bswiecki.dev\/post\/2019-07-14-k-dag-university\/","name":"K dag university"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Bartłomiej Święcki"},"headline":"K-DAG University","description":"Last time I briefly described the knowledge in the form of a Graph structure. Each term having set of prerequisites is a node in this graph, each dependency is a directed edge in such graph.\nNow let\u0026rsquo;s assume this graph is a directed acyclic one and there are no terms which form a cycle of dependencies. In reality I don\u0026rsquo;t believe this to be true but it does simplify reasoning and can definitely be achieved locally for larger terms.","inLanguage":"en","wordCount":1245,"datePublished":"2019-07-14T00:00:00","dateModified":"2019-07-14T00:00:00","image":"https:\/\/blog.bswiecki.dev\/","keywords":["k-dag, ideas"],"mainEntityOfPage":"https:\/\/blog.bswiecki.dev\/post\/2019-07-14-k-dag-university\/","publisher":{"@type":"Organization","name":"https:\/\/blog.bswiecki.dev\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.bswiecki.dev\/","height":60,"width":60}}}</script><meta property="og:title" content="K-DAG University"><meta property="og:description" content="Last time I briefly described the knowledge in the form of a Graph structure. Each term having set of prerequisites is a node in this graph, each dependency is a directed edge in such graph.
+Now let&rsquo;s assume this graph is a directed acyclic one and there are no terms which form a cycle of dependencies. In reality I don&rsquo;t believe this to be true but it does simplify reasoning and can definitely be achieved locally for larger terms."><meta property="og:url" content="https://blog.bswiecki.dev/post/2019-07-14-k-dag-university/"><meta property="og:type" content="website"><meta property="og:site_name" content="Just a dev blog"><meta name=twitter:title content="K-DAG University"><meta name=twitter:description content="Last time I briefly described the knowledge in the form of a Graph structure. Each term having set of prerequisites is a node in this graph, each dependency is a directed edge in such graph.
+Now …"><meta name=twitter:card content="summary_large_image"><meta name=generator content="Hugo 0.101.0"><link rel=alternate href=https://blog.bswiecki.dev/index.xml type=application/rss+xml title="Just a dev blog"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://blog.bswiecki.dev/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://blog.bswiecki.dev/css/syntax.css><link rel=stylesheet href=https://blog.bswiecki.dev/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=https://blog.bswiecki.dev/>Just a dev blog</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li><a title=Blog href=https://blog.bswiecki.dev/>Blog</a></li><li><a title=About href=https://blog.bswiecki.dev/page/about/>About</a></li><li><a title=Tags href=https://blog.bswiecki.dev/tags>Tags</a></li></ul></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>K-DAG University</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on July 14, 2019
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Bartłomiej Święcki</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>Last time I briefly described the knowledge in the form of a Graph structure.
+Each term having set of prerequisites is a node in this graph, each
+dependency is a directed edge in such graph.</p><p>Now let&rsquo;s assume this graph is a directed acyclic one and there are no
+terms which form a cycle of dependencies. In reality I don&rsquo;t believe
+this to be true but it does simplify reasoning and can definitely be achieved
+locally for larger terms.</p><p>Let&rsquo;s imagine that we could create a new tool to help people learn new things
+by using such graph.</p><h2 id=the-shape-of-university>The shape of University</h2><p>We&rsquo;ve got used to our school systems - we learn in classes with other students,
+each year is split into two semesters, there&rsquo;s usually a teacher and students.
+There are certain rules applied which meaningful to organize the learning
+process and make it efficient.</p><p>But let&rsquo;s think about a bit different shape.</p><ul><li>Instead of a teacher we have a web-based Knowledge DAG application</li><li>Instead of attending classes about some topics, people try to gain
+knowledge related to specific precise terms (i.e. Geometry Basics)</li><li>Every student has a set of knowledge points he has mastered,
+some kind of digital signing could be used as a form of proof of
+accomplishment</li><li>Knowledge points (points in the DAG) may be of different kinds:<ul><li>Some knowledge points are milestone ones and group together smaller
+terms (like mathematics groups geometry, trigonometry and any others)</li><li>Some knowledge points are sequentially chained - i.e. steps to achieve
+one greater point but split into smaller parts to ease the learning
+process</li><li>Knowledge point may describe some short topic - i.e. 5-minute
+lecture with easy to understand definition</li><li>Knowledge point may also be some sort of example to clarify previously shown
+term</li><li>Knowledge point may be an exercise that helps memorizing a term</li><li>Knowledge point may also be a test that has to be passed in order
+to mark the point as mastered (this I believe would require
+some digital signature to prove the test has been passed)</li></ul></li><li>The form / kind of knowledge points may be freely adjusted to the
+knowledge that needs to be presented. Some terms may require a lot
+of examples and exercises to be mastered, some could require only a
+brief explanation, some may present a lot of terms which have to
+be mastered one by one</li><li>Some major terms could have different set of &ldquo;paths&rdquo; (or
+rather subgraphs) that let master a term. Those paths could
+be prepared by different people, could be adjusted to different
+backgrounds, even cultural differences. The rule is that those
+should be equal regarding the final goal</li><li>The whole graph should be clustered into larger groups
+to help better organizing the knowledge. A group should touch
+one specific bigger topic of the knowledge (just like one class
+in a school). Each such group should have at least few
+major terms in it, preferably one.</li><li>If one group does rely on a knowledge from another group it&rsquo;s best to depend
+on major terms from other groups only. That way we just shape the overall
+requirements but we don&rsquo;t exactly specify how one needs to get to them.</li></ul><h2 id=how-this-could-work-in-practice>How this could work in practice</h2><p>Let&rsquo;s say I want to learn the best way to write some web app in <em>node.js</em>. I log into my
+&ldquo;University&rdquo; page and search for <em>node.js</em> term. Once found, I check if it&rsquo;s
+a pretty recent one - I don&rsquo;t want to learn something that was relevant 3 years ago.</p><p>Once selected, the system shows me few alternative paths which I can choose.
+For each path I could see the popularity, my current progress in each alternative
+(well, I&rsquo;ve learnt some javascript already so it won&rsquo;t be needed here), info about
+authors etc.</p><p>Once I&rsquo;ve selected the &ldquo;Course&rdquo; that seems to be the best one, I&rsquo;m notified that
+there are few required major points to master - such as the basics of
+the asynchronous programming - I try to find the best way to master those major points too.</p><p>Once I&rsquo;m done I can go to my task list.</p><p>It shows a nice list of knowledge points - those I can jump into straight away -
+I&rsquo;ve already mastered all their dependencies. Ok, let&rsquo;s jump into one and start
+doing my lectures and exercises.</p><p>Whoow, there&rsquo;s a surprise. The creator of node.js lecture has created a nice 2D
+map of all terms I&rsquo;d have to learn in the &ldquo;course&rdquo; - that looks lust like maps
+in Super Mario, nice :)</p><p>Next day I&rsquo;m doing few lectures while commuting to my job - those are short
+5-minute videos so I can easily pause at any time I want and continue later.</p><p>Finally after few weeks there&rsquo;s an exam - I take a deep breath and open a web page
+with the test. It shows few questions and live code editor box. Each question
+does validate my code and checks if it&rsquo;s ok. I&rsquo;m answering the questions one by one.
+Finally I&rsquo;ve done all of them. My answers are sent to the final validation.
+Few minutes later I receive a message that I&rsquo;ve passed, hurray !!!</p><p>I quickly grab the link to my accomplishment and post it onto my LinkedIn account.
+I did master <em>node.js</em> since I want to change my job soon. Such accomplishment badge will be
+helpful. LinkedIn servers quickly verify all signatures of the accomplishment -
+soon my profile gets another nice icon in my badges page.</p><p>Few days later I got the first interview invitation. Recruiter was looking for
+people who mastered <em>node.js</em> and knows some <em>C++</em> - I mastered <em>C++</em> half a year ago,
+that was a good move.</p><p>Recruiter knows exactly what&rsquo;s my level of the knowledge. There are few topics
+I&rsquo;m still not yet good enough at but I already got the list from the job
+description so I know what to prepare next.</p><p>Some time has passed and I got my new job. After the introduction, I start getting used to
+some internal tools created by the company. Of course they have their internal K-Dag
+server so even though the topics I master here won&rsquo;t be made public, I already know
+how to operate there and the system knows what I&rsquo;ve mastered so far.</p><p>Few months later I&rsquo;m sent to a training session. I know it&rsquo;s pretty expensive so I
+could never afford that by myself. Bu the company sees a big potential in me so they
+believe it&rsquo;s worth it. Before starting the course I&rsquo;ve sent my profile to the trainer.
+He was well prepared - he knew exactly what the background
+of our group was so he tuned the material to our current knowledge. Once we&rsquo;ve
+completed the course, he also signed all certificates for us - my profile has been
+updated once again, new achievements unlocked on my LinkedIn account :)</p><h2 id=the-idea-is-here-whats-next>The idea is here, what&rsquo;s next?</h2><p>I don&rsquo;t know how about you but I&rsquo;m sold on the idea and would like to implement it
+one day. It could be made fully decentralized and distributed, could be shaped in
+a way to make the knowledge more approachable and accessible.
+It could also have many implementations as long as the core is strong and well
+thought off. There are also many ways to monetize K-DAG so why not try doing it?</p><p>So my plan now is to create some trivial prototype . You can expect some blog posts
+about it soon.</p><div class=blog-tags><a href=https://blog.bswiecki.dev//tags/k-dag/>k-dag</a>&nbsp;
+<a href=https://blog.bswiecki.dev//tags/ideas/>ideas</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://blog.bswiecki.dev/post/2019-07-10-knowledge-dag/ data-toggle=tooltip data-placement=top title="Knowledge DAG">&larr; Previous Post</a></li></ul><div class=disqus-comments><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//blogbswieckidev.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/byo title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://linkedin.com/in/bswiecki title=LinkedIn><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://keybase.io/byo title=Keybase><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-keybase fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted">Bartłomiej Święcki
+&nbsp;&bull;&nbsp;&copy;
+2019
+&nbsp;&bull;&nbsp;
+<a href=https://blog.bswiecki.dev/>Just a dev blog</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.101.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://blog.bswiecki.dev/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://blog.bswiecki.dev/js/load-photoswipe.js></script></body></html>
