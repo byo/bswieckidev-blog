@@ -1,6 +1,6 @@
 ---
 title: "Throttling in Go"
-date: 2022-07-31
+date: 2022-10-07
 tags: ["go", "howto", "code"]
 ---
 
