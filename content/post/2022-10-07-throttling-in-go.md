@@ -39,11 +39,11 @@ I only realized that this is a very neat throttling mechanism a bit later.
 How is it done? A dedicated go channel is used as a token disposal machine. To do some throttled operation,
 one takes the token from that channel (`token := <- channel`) and gives it back once the operation is finished
 (`channel <- token`). If there are no tokens left, the channel will naturally block the goroutine until someone
-else returns previously acquired token back to the poll.
+else returns previously acquired token back to the pool.
 
 All of that can be done in just few lines of go code.
 
-In this post I'd like to play a bit with this idea and show you how such throttlers can be easily implemented.
+In this post I'd like to play a bit with this idea and show you how easy such throttlers can be implemented.
 
 ## The basic implementation
 
@@ -72,7 +72,7 @@ func initTokens() {
 }
 ```
 
-We can also extract the throttler to a separate object that is easy to use:
+We can also extract the throttler to a separate easy to use object:
 
 ```go
 type Throttler struct {
@@ -108,19 +108,21 @@ func worker() {
 }
 ```
 
-You may notice that in the `Acquire` method instead of returning the token itself
-I'm returning a `func()` object. Executing that function will release the token back
-to the pool. That way the acquire and the release of the token are tightly coupled together.
+You may notice that the `Acquire` method returns a `func()` object instead of the token.
+That function will release the token back to the pool when executed.
+That way the acquire and the release of the token are tightly coupled together
+and we can both acquired the token and schedule its release upon
+function exit in a nice one-liner.
 
 ## Reversed implementation
 
-How we can imagine the implementation above is that the channel holds idle tokens.
-Worker takes the token from the set of idle tokens and gives it back once done with the job.
+The implementation above can be interpreted as the channel being a set of idle tokens.
+Worker takes the token from that set and gives it back once done with the job.
 
 But we can also reverse the idea and use channel as a holder of tokens for busy workers.
-Before doing the task, worker would put its token into the channel and take it back
-once the work is finished. Since the channel has maximum capacity, once it is full, more *busy*
-tokens will wait unless someone takes its token from the channel:
+Before doing the task, worker puts its token into the channel and takes it back
+once the work is finished. Since the channel has the maximum capacity, once it is full,
+more *busy* tokens will have to wait until someone takes one's token from the channel:
 
 ```go
 type Throttler struct {
@@ -139,7 +141,7 @@ func (c *Throttler) Acquire() func() {
 ```
 
 The biggest difference here is that the channel doesn't have to be populated with tokens
-during initialization but otherwise there's not such a big difference between those two implementations.
+during initialization but otherwise there's not much of a difference between those two implementations.
 
 ## Old-style implementation
 
@@ -185,20 +187,20 @@ Much more complex implementation compared to the previous one, right?
 When I first wrote it I assumed that there will be a huge performance boost because we replaced a *heavy*
 channel object with a *lightweight* low-level synchronization mechanisms.
 
-But after I run some benchmarks and it turned out that this implementation is only between
+But after I run some benchmarks it turned out that this implementation is only between
 12% to 19% faster than our original one. This does not sound like a huge difference to me.
-Maybe in some very specific use-cases it could be beneficial but I believe that if each CPU cycle
-spent is making a difference then languages such as c or c++ (or even assembly) would be
-a better fit in such environment.
+Maybe in some very specific CPU-sensitive use cases it could be beneficial but I believe that
+if each spent CPU cycle is making the difference then languages such as c or c++ (or even assembly)
+would be a better fit there.
 
-Putting performance difference aside, there's one more huge difference I'd still like to talk about.
+Putting performance difference aside, there's one more huge difference I'd like to point out.
 
 ## Cancellable waits
 
-Our throttlers in go has one more huge advantage over the one based on mutex.
+Our channel-based throttlers have one huge advantage over the one based on mutex.
 They can easily be extended to also support cancellation through context.
 
-Here's an example of cancellable Acquire:
+Here's an example of a cancellable `Acquire`:
 
 ```go
 func (c *Throttler) Acquire(ctx context.Context) (func(), error) {
@@ -228,19 +230,20 @@ func worker(ctx context.Context) error {
 }
 ```
 
-Why we would need such context-aware throttler? A good example jere would be a simple http server.
-A http request can be cancelled at any time. This could be a result of the client dropping the connection
-or server shutdown. Waiting for token in case the request is already cancelled may be then pointless.
+Why we would need such context-aware throttler? Let's take a simple http server as an example.
+A http request can be cancelled at any time as a result of the client dropping the connection
+or server shutdown. Waiting for the token in case the request is already cancelled
+is most likely pointless and the request handler should return immediately.
 
 ## Low-level does not always mean more powerful
 
-Such cancellable acquire can not be easily implemented with low-level mutex and condition variables.
-Locking a mutex or waiting on a condition in go can not be interrupted thus the channel-based
-version is not only easier to write and understand but also supports much wider set of use-cases.
+Such cancellable acquire can not be easily implemented with low-level mutexes and condition variables.
+Locking a mutex or waiting on a condition in go can not be interrupted. This means that the channel-based
+version is not only easier to write and understand but also handles much broader set of use-cases.
 
-We could also try experimenting with a more complex implementations of such mutex-based throttler
-but at this point I don't see that we would gain much more with it.
-Considering relatively small performance gains I'd already stick to the channel-based implementation.
+We could of course try experimenting with some complex implementation of a mutex-based throttler supporting cancellation.
+But at this point I don't believe that we would gain much more with it.
+Considering relatively small performance gains I'd rather stay with the channel-based implementation.
 
 ## Future improvements
 
