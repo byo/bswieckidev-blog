@@ -4,7 +4,7 @@ date: 2022-11-22
 tags: ["go", "howto", "code"]
 ---
 
-In my [last post][post-prev] I presented few techniques for limit simultaneous operations in Go.
+In my [last post][post-prev] I presented few techniques useful for limiting simultaneous operations in Go.
 Such throttlers are indeed a very neat tools to keep our resources under control.
 However we can be extended that idea to even better tool for resource control when we mix throttlers with object pools.
 
