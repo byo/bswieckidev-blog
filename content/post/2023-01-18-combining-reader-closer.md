@@ -8,7 +8,8 @@ There are many interesting tools in Golang's standard library to wrap [`io.Reade
 
 Here's a quick code snippet to combine wrapped [`io.Reader`][io.Reader] and the original [`io.Closer`][io.Closer] through an inline `struct` to rebuild the [`io.Closer`][io.Closer] interface.
 
-<!--more-->
+
+## Code
 
 ```go
 var rc io.ReadCloser = struct {
@@ -219,7 +220,7 @@ The inline `struct` contains two [embedded fields][embedded_fields], one for the
 
 Since those fields are anonymous, the struct itself *inherits* methods from those fields as if those were declared on the struct. By doing so, whenever the compiler tries to cast the struct to some interface, it can *promote* those methods to fulfil the requirements of the interface.
 
-In the code above we return an instance of [`io.ReadCloser`][io.ReadCloser] interface that requires both `Read` and `Close` method - and those are *borrowed* from embedded fields respectively.
+In the code above we return an instance of [`io.ReadCloser`][io.ReadCloser] interface that requires both `Read` and `Close` methods - and those are *borrowed* from embedded fields respectively.
 
 Interestingly, if we would use whole [`io.ReadCloser`][io.ReadCloser] as the second embedded field instead of [`io.Reader`][io.Reader], the compiler (go 1.19 as of writing) throws an error which is caused by ambiguity between promoted field members (the `Read` method is not promoted due to ambiguity):
 

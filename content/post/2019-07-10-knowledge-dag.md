@@ -44,7 +44,7 @@ what is a point, a line, metric unit.
 What we can see even from this small example is that knowledge terms form a pretty
 well formed graph of dependencies:
 
-{{<mermaid>}}
+```mermaid
 %%{init: {'theme': 'forest', "flowchart" : { "curve" : "basis" } } }%%
 graph TD
     ta[Triangle area];
@@ -71,7 +71,7 @@ graph TD
     n --> ll;
     p --> c;
     ls --> c;
-{{< /mermaid >}}
+```
 
 In this example graph it's pretty clear what you need to learn in order to know
 how to calculate the area of a triangle. There's also an alternative term - **Circle**.

@@ -7,10 +7,10 @@ canonifyurls  = true
 enableEmoji = true
 
 DefaultContentLanguage = "en"
-theme                  = "beautifulhugo"
+theme                  = "PaperMod"
 metaDataFormat         = "yaml"
-pygmentsUseClasses     = true
-pygmentCodeFences      = true
+# pygmentsUseClasses     = true
+# pygmentCodeFences      = true
 disqusShortname       = "blogbswieckidev"
 
 [Params]
@@ -19,6 +19,7 @@ disqusShortname       = "blogbswieckidev"
   commit        = false
   rss           = true
   comments      = true
+  disableSpecial1stPost = true
 
 [Author]
   name = "Bartłomiej Święcki"
