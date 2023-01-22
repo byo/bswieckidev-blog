@@ -269,3 +269,10 @@ div.mermaidTooltip {
   pointer-events: none;
   z-index: 100;
 }
+
+.mermaid {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
